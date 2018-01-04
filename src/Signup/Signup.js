@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//import { addUser } from '../actions';
+import { addUser } from '../actions';
 import './Signup.css';
 
 
