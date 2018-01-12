@@ -43,7 +43,8 @@ server.listen(port, () => {
   });
 
 server.post('/Signup', function(req, res) {
-  const user = req.body;
+  const { body:user } = req.body;
+  // console.log(user);
   knex
     .insert(user)
     .into('users')
