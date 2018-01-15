@@ -36,11 +36,7 @@ class Signup extends Component {
 
     addUser(event) {
         event.preventDefault();
-        //const userToSave = {firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, displayName: this.state.displayName, city: this.state.city, state: this.state.state};
         axios.post('http://localhost:3001/Signup', { 
-            // headers: {
-            //     Access-Control-Allow-Origin: *
-            // },
             body: {
                 firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, displayName: this.state.displayName, city: this.state.city, state: this.state.state 
             }})
