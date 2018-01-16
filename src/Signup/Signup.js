@@ -6,27 +6,21 @@ class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
             email: '',
             displayName: '',
-            city: '',
-            state: '',
+            password: '',
         };
         this.addUser = this.addUser.bind(this);
-        this.updateFirstName = this.updateFirstName.bind(this);
-        this.updateLastName = this.updateLastName.bind(this);
         this.updateEmail = this.updateEmail.bind(this);
         this.updateDisplayName = this.updateDisplayName.bind(this);
-        this.updateCity = this.updateCity.bind(this);
-        this.updateState = this.updateState.bind(this);
+        this.updatePassword = this.updatePassword.bind(this);
     }
 
     addUser(event) {
         event.preventDefault();
-        axios.post('http://localhost:3001/Signup', { 
+        axios.post('http://localhost:3001/signup', { 
             body: {
-                firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, displayName: this.state.displayName, city: this.state.city, state: this.state.state 
+                email: this.state.email, displayName: this.state.displayName, password: this.state.password 
             }})
             .then((response) => {
                 console.log(response);
@@ -34,18 +28,6 @@ class Signup extends Component {
             .catch((err) => {
                 console.log({'error': err})
             });
-    }
-
-    updateFirstName(event) {
-        this.setState({
-            firstName: event.target.value
-        });
-    }
-
-    updateLastName(event) {
-        this.setState({
-            lastName: event.target.value
-        });
     }
 
     updateEmail(event) {
@@ -60,15 +42,9 @@ class Signup extends Component {
         });
     }
 
-    updateCity(event) {
+    updatePassword(event) {
         this.setState({
-            city: event.target.value
-        });
-    }
-
-    updateState(event) {
-        this.setState({
-            state: event.target.value
+            password: event.target.value
         });
     }
 
@@ -76,16 +52,6 @@ class Signup extends Component {
         return (
             <div className="SignUpForm">
                 <form onSubmit={this.addUser}>
-                    <input
-                        onChange={this.updateFirstName}
-                        placeholder="First Name"
-                        value={this.state.firstName}
-                    />
-                    <input
-                        onChange={this.updateLastName}
-                        placeholder="Last Name"
-                        value={this.state.lastName}
-                    />
                     <input
                         onChange={this.updateEmail}
                         placeholder="Email"
@@ -97,14 +63,9 @@ class Signup extends Component {
                         value={this.state.displayName}
                     />
                     <input
-                        onChange={this.updateCity}
-                        placeholder="City"
-                        value={this.state.city}
-                    />
-                    <input
-                        onChange={this.updateState}
-                        placeholder="State"
-                        value={this.state.state}
+                        onChange={this.updatePassword}
+                        placeholder="Password"
+                        value={this.state.password}
                     />
                     <button type="submit">Sign Up</button>
                 </form>

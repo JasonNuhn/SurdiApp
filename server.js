@@ -6,7 +6,7 @@ const sqlite = require('sqlite3');
 const port = process.env.PORT || 3001;
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const middleWare = require('/middlewares');
+//const middleWare = require('/middlewares');
 
 const STATUS_USER_ERROR = 422;
 const BCRYPT_COST = 11;
@@ -25,7 +25,7 @@ server.listen(port, () => {
 //  -----  User CRUD Operations -----
 
 // POST request - addUser
-server.post('/Signup', function(req, res) {
+server.post('/signup', function(req, res) {
   const { body:user } = req.body;
   // console.log(user);
   // if (!displayName) {
@@ -128,7 +128,7 @@ server.delete('/user/:id', function(req, res) {
 //  -----  Question CRUD Operations -----
 
 // POST request
-server.post('/Question', function(req, res) {
+server.post('/question', function(req, res) {
   const question = req.body;
   // console.log(user);
   knex
@@ -206,7 +206,7 @@ server.delete('/question/:id', function(req, res) {
 //  -----  Answer CRUD Operations -----
 
 // POST request
-server.post('/Answer', function(req, res) {
+server.post('/answer', function(req, res) {
   const answer = req.body;
   // console.log(user);
   knex

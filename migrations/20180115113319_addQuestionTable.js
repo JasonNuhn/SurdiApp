@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
         tbl.integer('userId', 20).notNullable().references('id').inTable('users');
         tbl.string('language', 45).notNullable();
         tbl.string('question', 45).notNullable();
+        tbl.string('context', 45).notNullable();
         tbl.timestamp('createdAt', 45).defaultTo(knex.fn.now());
       });
 };
