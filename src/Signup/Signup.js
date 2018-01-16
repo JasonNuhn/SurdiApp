@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
-//import { addUser } from '../actions';
 import './Signup.css';
 import axios from 'axios';
-
-//const knex = require('/db.js');
-//const sqlite = require('sqlite3')
-
-// const Signup = (props) => {
-//     return (
-//         <div className="Signup">
-           
-//         </div>
-//     )
-// }
 
 class Signup extends Component {
     constructor(props) {

@@ -5,33 +5,12 @@ const knex = require('./db.js');
 const sqlite = require('sqlite3');
 const port = process.env.PORT || 3001;
 const cors = require('cors');
-// var whitelist = [
-//   "http://localhost:3000",
-//   "http://localhost:3001",
-//   // 'https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_ten'
-// ];
+const bcrypt = require('bcrypt');
+const middleWare = require('/middlewares');
 
-// var corsOptions = {
-//     origin: function(origin, callback){
-//         var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-//         callback(null, originIsWhitelisted);
-//     },
-//     credentials: true
-// };
+const STATUS_USER_ERROR = 422;
+const BCRYPT_COST = 11;
 
-// const server = express();
-
-// server.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Request-Method", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   res.header("Access-Control-Max-Age", "1728000");
-//   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
-//   next();
-// });
-// server.use(cors(corsOptions));
-
-//const cors = require('cors')
 const server = express()
 
 server.use(cors())
@@ -49,6 +28,31 @@ server.listen(port, () => {
 server.post('/Signup', function(req, res) {
   const { body:user } = req.body;
   // console.log(user);
+  // if (!displayName) {
+  //   middleWare.sendUserError('displayName undefined', res);
+  //   return;
+  // }
+  // User.findOne({ displayName }, (err, user) => {
+  //   if (err || user === null) {
+  //     middleWare.sendUserError('No user found at that id', res);
+  //     return;
+  //   }
+  //   const hashedPw = user.passwordHash;
+  //   bcrypt
+  //     .compare(password, hashedPw)
+  //     .then((response) => {
+  //       if (!response) throw new Error();
+  //       req.session.displayName = displayName;
+  //       req.user = user;
+  //     })
+  //     .then(() => {
+  //       res.json({ success: true});
+  //     })
+  //     .catch((error) => {
+  //       return middleWare.sendUserError('some message here', res);
+  //     });
+  // });
+
   knex
     .insert(user)
     .into('users')
