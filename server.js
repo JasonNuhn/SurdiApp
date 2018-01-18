@@ -27,6 +27,7 @@ server.listen(port, () => {
 // POST request - addUser
 server.post('/signup', function(req, res) {
   const { body:user } = req.body;
+  //const user = req.body;
   // console.log(user);
   // if (!displayName) {
   //   middleWare.sendUserError('displayName undefined', res);
@@ -124,6 +125,111 @@ server.delete('/user/:id', function(req, res) {
       }
     });
 });
+
+//  -----  Profile CRUD Operations -----
+
+// POST request - addProfile
+server.post('/profile', function(req, res) {
+  //const { body:user } = req.body;
+  const profile = req.body;
+  // console.log(user);
+  // if (!displayName) {
+  //   middleWare.sendUserError('displayName undefined', res);
+  //   return;
+  // }
+  // User.findOne({ displayName }, (err, user) => {
+  //   if (err || user === null) {
+  //     middleWare.sendUserError('No user found at that id', res);
+  //     return;
+  //   }
+  //   const hashedPw = user.passwordHash;
+  //   bcrypt
+  //     .compare(password, hashedPw)
+  //     .then((response) => {
+  //       if (!response) throw new Error();
+  //       req.session.displayName = displayName;
+  //       req.user = user;
+  //     })
+  //     .then(() => {
+  //       res.json({ success: true});
+  //     })
+  //     .catch((error) => {
+  //       return middleWare.sendUserError('some message here', res);
+  //     });
+  // });
+
+  knex
+    .insert(profile)
+    .into('profiles')
+    .then(function(pro) {
+      res.status(201).json({ pro: pro });
+    })
+    .catch(function(err) {
+      if (err.code === 'SQLITE_CONSTRAINT') {
+        res.status(422).json({ error: 'This profile already exist' });
+      } else {
+        res.status(500).json(err);
+      }
+    });
+});
+
+// GET request - profiles
+server.get('/profiles', function(req, res) {
+  const profiles = knex('profiles')
+    .then(function(records) {
+      res.status(200).json(records);
+    })
+    .catch(function(error) {
+      res.status(500).json({ error });
+    });
+});
+
+// GET request - profileId
+server.get('/profile/:id', function(req, res) {
+  const { id } = req.params;
+  
+  const profiles = knex('profiles')
+    .where('id', id)
+    .then(function(records) {
+      res.status(200).json(records);
+    })
+    .catch(function(error) {
+      res.status(500).json({ error });
+    });
+});
+
+// PUT request
+server.put('/profile/:id', function(req, res) {
+  const { id } = req.params;
+  
+  const users = knex('profiles')
+    .where('id', id)
+    .update(req.body)
+    .then(function(records) {
+      res.status(200).json(records);
+    })
+    .catch(function(error) {
+      res.status(500).json({ error });
+    });
+});
+
+// DELETE request
+server.delete('/profile/:id', function(req, res) {
+  knex('profiles')
+    .where('id', req.params.id)
+    .delete()
+    .then(function(count) {
+      res.status(200).json({ deleted: count });
+    })
+    .catch(function(err) {
+      if (err.code === 'SQLITE_CONSTRAINT') {
+        res.status(422).json({ error: 'This profile does not exist' });
+      } else {
+        res.status(500).json(err);
+      }
+    });
+});
+
 
 //  -----  Question CRUD Operations -----
 
