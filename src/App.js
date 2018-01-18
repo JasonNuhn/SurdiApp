@@ -7,7 +7,7 @@ import Home from './Home/Home';
 import Language from './Language/Language';
 import UsersList from './Users/Users';
 import Questions from './Question/Questions';
-// import Login from './Login/Login';
+import AskQuestion from './Question/AskQuestion';
 // import Signup from './Signup/Signup';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
         <Link to="/questions" className="active">Questions</Link>
         <Link to="/languages" className="active">Language</Link>
         <Link to="/users" className="active">Users</Link>
-        {/* <Link to="/login" className="active">Log In</Link> */}
+        <Link to="/question" className="active">Ask</Link>
         {/* <Link to="/signup" className="active">Sign Up</Link> */}
       
 
@@ -27,7 +27,7 @@ class App extends Component {
         <Route path="/questions" component={Questions} />
         <Route path="/languages" component={Language} />
         <Route path="/users" component={UsersList} />
-        {/* <Route path="/login" component={Login} /> */}
+        <Route path="/question" component={AskQuestion} /> */}
         {/* <Route path="/signup" component={Signup} /> */}
       <Footer />
     </div>

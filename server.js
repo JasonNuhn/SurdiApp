@@ -129,7 +129,7 @@ server.delete('/user/:id', function(req, res) {
 
 // POST request
 server.post('/question', function(req, res) {
-  const question = req.body;
+  const { body:question } = req.body;
   // console.log(user);
   knex
     .insert(question)
