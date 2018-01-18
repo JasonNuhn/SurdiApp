@@ -6,7 +6,7 @@ import Footer from './Footer/Footer';
 import Home from './Home/Home';
 import Language from './Language/Language';
 import UsersList from './Users/Users';
-import Question from './Question/Question';
+import Questions from './Question/Questions';
 // import Login from './Login/Login';
 // import Signup from './Signup/Signup';
 
@@ -24,7 +24,7 @@ class App extends Component {
       
 
         <Route exact path="/" component={Home} />
-        <Route path="/questions" component={Question} />
+        <Route path="/questions" component={Questions} />
         <Route path="/languages" component={Language} />
         <Route path="/users" component={UsersList} />
         {/* <Route path="/login" component={Login} /> */}
