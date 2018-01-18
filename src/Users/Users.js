@@ -25,7 +25,7 @@ class Users extends Component {
              // });
              
              .then((response) => {
-                 console.log(response);
+                 //console.log(response);
                  this.setState({users: response.data})
              })
              .catch((error) => {

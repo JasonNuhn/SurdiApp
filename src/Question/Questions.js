@@ -26,7 +26,7 @@ componentDidMount() {
             // });
             
             .then((response) => {
-                console.log(response);
+                //console.log(response);
                 this.setState({questions: response.data})
             })
             .catch((error) => {
@@ -37,7 +37,7 @@ componentDidMount() {
    render() {
     return (
         <div className="Question">
-                <h1>Hello World!</h1>
+                <h1>All Questions</h1>
                 {this.state.questions.map((quest, index) => {
                 return (
                     <Question QuesData={quest} key={index}/>

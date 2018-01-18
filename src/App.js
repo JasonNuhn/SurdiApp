@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
-import Footer from './Footer/Footer';
+// import Footer from './Footer/Footer';
 import Home from './Home/Home';
 import Languages from './Language/Languages';
 import Users from './Users/Users';
@@ -13,6 +13,7 @@ import AskQuestion from './Question/AskQuestion';
 class App extends Component {
   render() {
     return (
+      <div>
       <Router>
       <div className="App-header">
         <Link to="/" className="active">Surdi</Link>
@@ -29,9 +30,12 @@ class App extends Component {
         <Route path="/users" component={Users} />
         <Route path="/question" component={AskQuestion} />
         {/* <Route path="/signup" component={Signup} /> */}
-      <Footer />
-    </div>
+      </div>
     </Router>
+      
+        {/* <Footer /> */}
+      
+    </div>
     )
   }
 }

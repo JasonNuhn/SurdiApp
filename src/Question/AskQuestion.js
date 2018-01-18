@@ -72,23 +72,23 @@ class AskQuestion extends Component {
                         placeholder="User"
                         value={this.state.userId}
                     />
-                    <h4>Title</h4><input
+                    <h4>Title:<input
                         onChange={this.updateQuestion}
                         placeholder="What is your question? Be specific"
                         value={this.state.question}
-                    />
-                    <br></br>
+                    /></h4>
                     <textarea
                         onChange={this.updateContext}
                         placeholder="Context"
                         value={this.state.context}
                     />
-                    <h4>Language</h4>
+                    <h4>Language:
                     <input
                         onChange={this.updateLanguage}
                         placeholder="Language"
                         value={this.state.language}
-                    />
+                    /></h4>
+                    <br></br>
                     <button type="submit">Submit Question</button>
                 </form>
             </div>

@@ -5,7 +5,7 @@ import './Language.css';
 const Language = (props) => {
     const data = props.LangData;
     return (
-        <div className="Language">
+        <div className="Language" id="col">
             {data.language}
         </div>
     )

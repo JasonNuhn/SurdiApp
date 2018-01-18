@@ -1,18 +1,20 @@
 .Question {
-    background-color: #CCCCCC;
-    height: 220px;
-    width: 100;
-    color: #003366;
-    box-sizing: content-box;
+  /* background-color: #CCCCCC; */
+  width: 100%;
+  color: #003366;
+  box-sizing: content-box;
+  /* padding: 20px 12px; */
+  margin: 8px 0;
+  text-align: left;
   }
 
 .QuestionForm {
   background-color: #CCCCCC;
-  height: 220px;
+  height: 340px;
   width: 100%;
   color: #003366;
   box-sizing: content-box;
-  padding: 12px 20px;
+  padding: 20px 12px;
   margin: 8px 0;
   text-align: left;
 }
@@ -24,11 +26,30 @@ textarea {
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-  background-color: #f8f8f8;
+  /* background-color: #CCCCCC; */
   resize: none;
 }
 
 input {
-  /* float: right; */
-  clear: both;
+  margin-left: 10px;
+  width: 20%;
 }
+
+.Question-language {
+  background-color: #CCCCCC;
+  width: 40%;
+  height: 30%;
+  color: #003366;
+  box-sizing: content-box;
+  padding: 10px 6px;
+  margin: 8px 0;
+  text-align: left;
+  }
+
+  .Question-all {
+    border-style: groove;
+    border-color: #CCCCCC;
+    border-width: 1px;
+    /* margin: 8px 0; */
+    padding: 10px 6px;
+  }
