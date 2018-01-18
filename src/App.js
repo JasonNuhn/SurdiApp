@@ -4,8 +4,8 @@ import './App.css';
 
 import Footer from './Footer/Footer';
 import Home from './Home/Home';
-import Language from './Language/Language';
-import UsersList from './Users/Users';
+import Languages from './Language/Languages';
+import Users from './Users/Users';
 import Questions from './Question/Questions';
 import AskQuestion from './Question/AskQuestion';
 // import Signup from './Signup/Signup';
@@ -25,9 +25,9 @@ class App extends Component {
 
         <Route exact path="/" component={Home} />
         <Route path="/questions" component={Questions} />
-        <Route path="/languages" component={Language} />
-        <Route path="/users" component={UsersList} />
-        <Route path="/question" component={AskQuestion} /> */}
+        <Route path="/languages" component={Languages} />
+        <Route path="/users" component={Users} />
+        <Route path="/question" component={AskQuestion} />
         {/* <Route path="/signup" component={Signup} /> */}
       <Footer />
     </div>

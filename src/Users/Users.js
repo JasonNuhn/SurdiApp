@@ -1,19 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
+import User from './User';
+import './User.css';
 
-import './Users.css';
-
-const UsersList = (props) => {
-    return (
-        <div className="User">
-            
-            <p>username</p>
-            <p>location</p>
-            <p>answers</p>
-            <p>language</p>
-            
-        </div>
-    )
-}
-
-
-export default UsersList
+class Users extends Component {
+    constructor() {
+        super();
+        this.state = {
+            users: []
+        };
+ 
+    }
+ 
+ componentDidMount() {
+     //const self = this;
+         // event.preventDefault();
+         axios.get('http://localhost:3001/users')
+             // .then(function(response) {
+             //     console.log(response);
+             //     this.setState({ questions: response.data });
+             // })
+             // .catch(function(error) {
+             //     console.log(error);
+             // });
+             
+             .then((response) => {
+                 console.log(response);
+                 this.setState({users: response.data})
+             })
+             .catch((error) => {
+                 console.log(error);
+             });
+         }
+ 
+    render() {
+     return (
+         <div className="User">
+                 <h1>All the Users!</h1>
+                 {this.state.users.map((use, index) => {
+                 return (
+                     <User UserData={use} key={index}/>
+                 )
+             })}
+             </div>
+        );
+    }
+ }
+ 
+ export default Users;
