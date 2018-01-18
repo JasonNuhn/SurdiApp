@@ -59,26 +59,35 @@ class AskQuestion extends Component {
     render() {
         return (
             <div className="QuestionForm">
+                <h2>How to Ask</h2>
+                <h4>Stay on-topic</h4>
+                <p>Please stick to topics and avoid asking for opinions or open-ended discussions.</p>
+                <h4>Be Specific</h4>
+                <p>If the question you ask is vague, the answer would most likely be vague as well.</p>
+                <h4>Keep an open mind</h4>
+                <p>Be aware that you may not get the answer you wanted.  When in doubt, ask people to ite their sources</p>
                 <form onSubmit={this.addQuestion}>
                     <input
                         onChange={this.updateUserId}
                         placeholder="User"
                         value={this.state.userId}
                     />
-                    <input
+                    <h4>Title</h4><input
                         onChange={this.updateQuestion}
-                        placeholder="Question"
+                        placeholder="What is your question? Be specific"
                         value={this.state.question}
                     />
+                    <br></br>
+                    <textarea
+                        onChange={this.updateContext}
+                        placeholder="Context"
+                        value={this.state.context}
+                    />
+                    <h4>Language</h4>
                     <input
                         onChange={this.updateLanguage}
                         placeholder="Language"
                         value={this.state.language}
-                    />
-                    <input
-                        onChange={this.updateContext}
-                        placeholder="Context"
-                        value={this.state.context}
                     />
                     <button type="submit">Submit Question</button>
                 </form>

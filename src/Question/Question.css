@@ -5,3 +5,30 @@
     color: #003366;
     box-sizing: content-box;
   }
+
+.QuestionForm {
+  background-color: #CCCCCC;
+  height: 220px;
+  width: 100%;
+  color: #003366;
+  box-sizing: content-box;
+  padding: 12px 20px;
+  margin: 8px 0;
+  text-align: left;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+input {
+  /* float: right; */
+  clear: both;
+}
