@@ -32,7 +32,6 @@ class App extends Component {
         {/* <Route path="/signup" component={Signup} /> */}
       </div>
     </Router>
-      
         {/* <Footer /> */}
       
     </div>

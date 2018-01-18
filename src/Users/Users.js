@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import User from './User';
 import './User.css';
@@ -37,6 +38,11 @@ class Users extends Component {
      return (
          <div className="User">
                  <h1>All the Users!</h1>
+                 <Link to="/question">
+              <button type="button">
+                    Ask Question
+              </button>
+            </Link>
                  {this.state.users.map((use, index) => {
                  return (
                      <User UserData={use} key={index}/>

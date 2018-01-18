@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+//import AskQuestion from '../Question/AskQuestion';
 import { FirebaseAuth } from 'react-firebaseui';
 import firebase from 'firebase';
 // import Slide from '../node_modules';
@@ -55,6 +57,11 @@ class Home extends Component {
         <h1>To Unite and To Converse</h1>
             <p>Connect with the World</p>
             <p>One Sign at a time</p>
+            <Link to="/question">
+              <button type="button">
+                    Ask Question
+              </button>
+            </Link>
          </div>
         );
       }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Language from './Language';
 
@@ -38,6 +39,11 @@ componentDidMount() {
     return (
         <div className="Language">
                 <h1>All the Languages!</h1>
+                <Link to="/question">
+              <button type="button">
+                    Ask Question
+              </button>
+            </Link>
                 {this.state.languages.map((lang, index) => {
                 return (
                     <Language LangData={lang} key={index}/>
