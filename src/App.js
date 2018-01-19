@@ -5,9 +5,10 @@ import './App.css';
 // import Footer from './Footer/Footer';
 import Home from './Home/Home';
 import Languages from './Language/Languages';
-import Users from './Users/Users';
+import Profiles from './Profiles/Profiles';
 import Questions from './Question/Questions';
 import AskQuestion from './Question/AskQuestion';
+import GetQuestion from './Question/GetQuestion';
 // import Signup from './Signup/Signup';
 
 class App extends Component {
@@ -19,16 +20,18 @@ class App extends Component {
         <Link to="/" className="active">Surdi</Link>
         <Link to="/questions" className="active">Questions</Link>
         <Link to="/languages" className="active">Language</Link>
-        <Link to="/users" className="active">Users</Link>
-        <Link to="/question" className="active">Ask</Link>
+        <Link to="/profiles" className="active">User</Link>
+        <Link to="/askquestion" className="active">Ask</Link>
+        <Link to="/question" className="active">Get</Link>
         {/* <Link to="/signup" className="active">Sign Up</Link> */}
       
 
         <Route exact path="/" component={Home} />
         <Route path="/questions" component={Questions} />
         <Route path="/languages" component={Languages} />
-        <Route path="/users" component={Users} />
-        <Route path="/question" component={AskQuestion} />
+        <Route path="/profiles" component={Profiles} />
+        <Route path="/askquestion" component={AskQuestion} />
+        <Route path="/question" component={GetQuestion} />
         {/* <Route path="/signup" component={Signup} /> */}
       </div>
     </Router>

@@ -26,8 +26,8 @@ server.listen(port, () => {
 
 // POST request - addUser
 server.post('/signup', function(req, res) {
-  const { body:user } = req.body;
-  //const user = req.body;
+  // const { body:user } = req.body;
+  const user = req.body;
   // console.log(user);
   // if (!displayName) {
   //   middleWare.sendUserError('displayName undefined', res);
@@ -313,7 +313,8 @@ server.delete('/question/:id', function(req, res) {
 
 // POST request
 server.post('/answer', function(req, res) {
-  const answer = req.body;
+  //const { body:user } = req.body;
+  const profile = req.body;
   // console.log(user);
   knex
     .insert(answer)

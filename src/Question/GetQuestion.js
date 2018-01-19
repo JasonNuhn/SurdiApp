@@ -1,33 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Question from './Question';
 import './Question.css';
 
-class Questions extends Component {
+class GetQuestion extends Component {
    constructor() {
        super();
        this.state = {
-           questions: [],
-           id: ''
+           question: []
        };
 
    }
-
-   handleUserId(userId) {
-    const question = this.state.question;
-    question.forEach((quest, i) => {
-        if (quest.id === userId) {
-            question.splice(i, 1);
-        }
-    });
-    this.setState({ question });
-}
-
 componentDidMount() {
-    //const self = this;
+    //const questionId = document.getElementById('questionId').value;
         // event.preventDefault();
-        axios.get('http://localhost:3001/questions')
+        axios.get(`http://localhost:3001/question`, {
+            params: {
+                id: 1
+            }
+        })
+        
             // .then(function(response) {
             //     console.log(response);
             //     this.setState({ questions: response.data });
@@ -38,7 +30,7 @@ componentDidMount() {
             
             .then((response) => {
                 console.log(response);
-                this.setState({questions: response.data})
+                this.setState({question: response.data})
             })
             .catch((error) => {
                 console.log(error);
@@ -48,17 +40,10 @@ componentDidMount() {
    render() {
     return (
         <div className="Question">
-                <h1>All Questions</h1>
-                {this.state.questions.map((quest, index) => {
+                {/* <h1>All Questions</h1> */}
+                {this.state.question.map((quest, index) => {
                 return (
-                    <div>
                     <Question QuesData={quest} key={index}/>
-                    <Link to="/question">
-                        <button type="button">
-                            Review
-                        </button>
-                    </Link>
-                    </div>
                 )
             })}
             </div>
@@ -66,4 +51,4 @@ componentDidMount() {
    }
 }
 
-export default Questions;
+export default GetQuestion;
