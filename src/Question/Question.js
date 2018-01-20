@@ -4,7 +4,6 @@ import './Question.css';
 
 const Question = (props) => {
     const data = props.QuesData;
-    console.log(data)
     return (
         <Link to={`/question/${data.id}`}>
         <div className="Question-all">

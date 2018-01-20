@@ -22,7 +22,7 @@ class App extends Component {
         <Link to="/languages" className="active">Language</Link>
         <Link to="/profiles" className="active">User</Link>
         <Link to="/askquestion" className="active">Ask</Link>
-        <Link to="/question" className="active">Get</Link>
+        {/* <Link to="/question" className="active">Get</Link> */}
         {/* <Link to="/signup" className="active">Sign Up</Link> */}
       
 

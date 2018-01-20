@@ -313,8 +313,8 @@ server.delete('/question/:id', function(req, res) {
 
 // POST request
 server.post('/answer', function(req, res) {
-  //const { body:user } = req.body;
-  const profile = req.body;
+  const { body:answer } = req.body;
+  //const profile = req.body;
   // console.log(user);
   knex
     .insert(answer)
