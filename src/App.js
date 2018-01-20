@@ -31,7 +31,7 @@ class App extends Component {
         <Route path="/languages" component={Languages} />
         <Route path="/profiles" component={Profiles} />
         <Route path="/askquestion" component={AskQuestion} />
-        <Route path="/question" component={GetQuestion} />
+        <Route path="/question/:id" component={GetQuestion} />
         {/* <Route path="/signup" component={Signup} /> */}
       </div>
     </Router>

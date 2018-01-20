@@ -3,6 +3,7 @@ import axios from 'axios';
 import Question from './Question';
 import './Question.css';
 
+//-----------------------------------//
 class GetQuestion extends Component {
    constructor() {
        super();
@@ -12,13 +13,11 @@ class GetQuestion extends Component {
 
    }
 componentDidMount() {
+    //const id = 2;
+    const { match: { params } } = this.props;
     //const questionId = document.getElementById('questionId').value;
         // event.preventDefault();
-        axios.get(`http://localhost:3001/question`, {
-            params: {
-                id: 1
-            }
-        })
+        axios.get(`http://localhost:3001/question/${params.id}`)
         
             // .then(function(response) {
             //     console.log(response);
@@ -27,7 +26,12 @@ componentDidMount() {
             // .catch(function(error) {
             //     console.log(error);
             // });
-            
+            // --------------------
+            // .then(response => this.setState(() => ({ curious: response.data})))
+            // .catch(error => {
+            //     console.error(error);
+            // });
+            // -----------------------
             .then((response) => {
                 console.log(response);
                 this.setState({question: response.data})
@@ -38,9 +42,13 @@ componentDidMount() {
         }
 
    render() {
+   //const { question, context, language } = this.state.curious
     return (
         <div className="Question">
                 {/* <h1>All Questions</h1> */}
+                {/* <h2>{question}</h2>
+                <div>{context}</div>
+                <div>{language}</div> */}
                 {this.state.question.map((quest, index) => {
                 return (
                     <Question QuesData={quest} key={index}/>
@@ -52,3 +60,5 @@ componentDidMount() {
 }
 
 export default GetQuestion;
+//------------------------------//
+

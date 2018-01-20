@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Question from './Question';
 import './Question.css';
@@ -9,20 +9,9 @@ class Questions extends Component {
        super();
        this.state = {
            questions: [],
-           id: ''
        };
 
    }
-
-   handleUserId(userId) {
-    const question = this.state.question;
-    question.forEach((quest, i) => {
-        if (quest.id === userId) {
-            question.splice(i, 1);
-        }
-    });
-    this.setState({ question });
-}
 
 componentDidMount() {
     //const self = this;
@@ -53,17 +42,44 @@ componentDidMount() {
                 return (
                     <div>
                     <Question QuesData={quest} key={index}/>
-                    <Link to="/question">
+                    {/* <Link to="/question">
                         <button type="button">
                             Review
                         </button>
-                    </Link>
+                    </Link> */}
                     </div>
                 )
             })}
+            {/* {this.state.questions.map(curious => (
+                <Magic key={curious.id} curious={curious} />
+            ))} */}
             </div>
        );
    }
 }
+
+// function Magic({ curious }) {
+//     const { question, context, language } = curious;
+//     return (
+//         <Link to={`/question/${curious.id}`}>
+//       <div className="Question">
+//         <h2>{question}</h2>
+//         <div className="Question">
+//           Context: <em>{context}</em>
+//         </div>
+//         <div className="Question">
+//           Language: <strong>{language}</strong>
+//         </div>
+//         {/* <h3>Actors</h3>
+
+//         {stars.map(star => (
+//           <div key={star} className="Question">
+//             {star}
+//           </div> */}
+//         ))}
+//       </div>
+//     </Link>
+//     );
+// }
 
 export default Questions;
