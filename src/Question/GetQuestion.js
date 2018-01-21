@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Question from './Question';
+// import Gif from '../Gif/gif';
 import './Question.css';
 
 class GetQuestion extends Component {
@@ -17,6 +18,7 @@ class GetQuestion extends Component {
         // this.updateQuestionId = this.updateQuestionId.bind(this);
         this.updateAnswer = this.updateAnswer.bind(this);
    }
+   
 
    getAnswer(event) {
     //const { match: { params } } = this.props;
@@ -99,7 +101,7 @@ componentDidMount() {
                         placeholder="Answer"
                         value={this.state.answer}
                     />
-                    <br></br>
+                    {/* <Gif /> */}
                     <button type="submit">Submit Answer</button>
                 </form>    
         </div>
@@ -108,5 +110,7 @@ componentDidMount() {
 }
 
 export default GetQuestion;
+
+
 
 

@@ -1,0 +1,3 @@
+[submodule "src/Question/gifshot"]
+	path = src/Question/gifshot
+	url = https://github.com/yahoo/gifshot.git

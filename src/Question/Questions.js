@@ -32,7 +32,7 @@ componentDidMount() {
                 <h1>All Questions</h1>
                 {this.state.questions.map((quest, index) => {
                 return (
-                    <div>
+                    <div key={index}>
                         <Question QuesData={quest} key={index}
                         />
                     </div>
