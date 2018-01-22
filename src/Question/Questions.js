@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Question from './Question';
 import './Question.css';
@@ -29,6 +29,11 @@ componentDidMount() {
    render() {
     return (
         <div className="Question">
+                <Link className="QB" to="/askquestion">
+                <button type="button">
+                      Ask Question
+                </button>
+              </Link>
                 <h1>All Questions</h1>
                 {this.state.questions.map((quest, index) => {
                 return (

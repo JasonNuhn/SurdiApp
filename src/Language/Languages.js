@@ -38,12 +38,12 @@ componentDidMount() {
    render() {
     return (
         <div className="Language">
+                <Link className="QB" to="/askquestion">
+                <button type="button">
+                      Ask Question
+                </button>
+              </Link>
                 <h1>All the Languages!</h1>
-                <Link to="/question">
-              <button type="button">
-                    Ask Question
-              </button>
-            </Link>
                 {this.state.languages.map((lang, index) => {
                 return (
                     <Language LangData={lang} key={index}/>

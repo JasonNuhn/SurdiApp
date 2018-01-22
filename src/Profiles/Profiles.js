@@ -37,12 +37,12 @@ class Profiles extends Component {
     render() {
      return (
          <div className="Profile">
+                 <Link className="QB" to="/askquestion">
+                 <button type="button">
+                       Ask Question
+                 </button>
+               </Link>
                  <h1>All the Profiles!</h1>
-                 <Link to="/askquestion">
-              <button type="button">
-                    Ask Question
-              </button>
-            </Link>
                  {this.state.profiles.map((pro, index) => {
                  return (
                      <Profile ProfileData={pro} key={index}/>

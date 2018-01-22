@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import './Question.css';
 import axios from 'axios';
+// import Login from '../Login/Login';
+import { FirebaseAuth } from 'react-firebaseui';
+import * as firebase from "firebase";
+
+var config = {
+    apiKey: "AIzaSyAhINOMHPGdc-Bnj5JzRUdFsbBrNJ9rp60",
+    authDomain: "surdiapp.firebaseapp.com",
+    databaseURL: "https://surdiapp.firebaseio.com",
+    projectId: "surdiapp",
+    storageBucket: "surdiapp.appspot.com",
+    messagingSenderId: "772398718929"
+  };
+  firebase.initializeApp(config);
 
 class AskQuestion extends Component {
         constructor(props) {
@@ -10,6 +23,7 @@ class AskQuestion extends Component {
             question: '',
             language: '',
             context: '',
+            signedIn: false
         };
         this.addQuestion = this.addQuestion.bind(this);
         this.updateUserId = this.updateUserId.bind(this);
@@ -17,6 +31,23 @@ class AskQuestion extends Component {
         this.updateLanguage = this.updateLanguage.bind(this);
         this.updateContext = this.updateContext.bind(this);
     }
+
+    uiConfig = {
+        // Popup signin flow rather than redirect flow.
+        signInFlow: 'popup',
+        // We will display Google and Facebook as auth providers.
+        signInOptions: [
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          //firebase.auth.FacebookAuthProvider.PROVIDER_ID
+        ],
+        // Sets the `signedIn` state property to `true` once signed in.
+        callbacks: {
+          signInSuccess: () => {
+            this.setState({signedIn: true});
+            return false; // Avoid redirects after sign-in.
+          }
+        }
+   };
 
     addQuestion(event) {
         event.preventDefault();
@@ -57,8 +88,18 @@ class AskQuestion extends Component {
     }
 
     render() {
+        if (!this.state.signedIn) {
+            return (
+              <div className="Signup">
+                <h1>Surdi</h1>
+                <p>Please sign-in:</p>
+                <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+              </div>
+            );
+          }
         return (
             <div className="QuestionForm">
+            {/* <LoginFix /> */}
                 <h2>How to Ask</h2>
                 <h4>Stay on-topic</h4>
                 <p>Please stick to topics and avoid asking for opinions or open-ended discussions.</p>

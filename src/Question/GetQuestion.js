@@ -1,64 +1,50 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Question from './Question';
+import QuestionAnswerForm from './QuestionAnswerForm';
+// import Login from '../Login/Login';
+import { FirebaseAuth } from 'react-firebaseui';
+import firebase from "firebase";
+
+
 // import Gif from '../Gif/gif';
 import './Question.css';
+
+// var config = {
+//     apiKey: "AIzaSyAhINOMHPGdc-Bnj5JzRUdFsbBrNJ9rp60",
+//     authDomain: "surdiapp.firebaseapp.com",
+//     databaseURL: "https://surdiapp.firebaseio.com",
+//     projectId: "surdiapp",
+//     storageBucket: "surdiapp.appspot.com",
+//     messagingSenderId: "772398718929"
+//   };
+  //firebase.initializeApp(config);
 
 class GetQuestion extends Component {
    constructor() {
        super();
        this.state = {
            question: [],
-           answer: '',
-           id: '',
-           userId: ''
+           signedIn: false
        };
-       this.getAnswer = this.getAnswer.bind(this);
-        // this.updateUserId = this.updateUserId.bind(this);
-        // this.updateQuestionId = this.updateQuestionId.bind(this);
-        this.updateAnswer = this.updateAnswer.bind(this);
-   }
-   
-
-   getAnswer(event) {
-    //const { match: { params } } = this.props;
-    //const userId = params.userId;
-    //const questionId = params.id;
-
-    event.preventDefault();
-    var id = this.state.id;
-    var userId = this.state.userId;
-    console.log(Object.keys(event.target));
-    axios.post('http://localhost:3001/answer', { 
-        body: {
-            userId: userId, questionId: id, answer: this.state.answer 
-        }})
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((err) => {
-            console.log({'error': err})
-        });
-
-}
-
-    // updateUserId(event) {
-    //     this.setState({
-    //         userId: event.target.userId
-    //     });
-    // }
-
-    // updateQuestionId(event) {
-    //     this.setState({
-    //         questionId: event.target.id
-    //     });
-    // }
-
-    updateAnswer(event) {
-        this.setState({
-            answer: event.target.value
-        });
     }
+
+       uiConfig = {
+        // Popup signin flow rather than redirect flow.
+        signInFlow: 'popup',
+        // We will display Google and Facebook as auth providers.
+        signInOptions: [
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          //firebase.auth.FacebookAuthProvider.PROVIDER_ID
+        ],
+        // Sets the `signedIn` state property to `true` once signed in.
+        callbacks: {
+          signInSuccess: () => {
+            this.setState({signedIn: true});
+            return false; // Avoid redirects after sign-in.
+          }
+        }
+   };
 
 componentDidMount() {
     const { match: { params } } = this.props;
@@ -69,6 +55,7 @@ componentDidMount() {
             .then((response) => {
                 console.log(response);
                 this.setState({question: response.data})
+                console.log(response);
             })
             .catch((error) => {
                 console.log(error);
@@ -76,34 +63,28 @@ componentDidMount() {
         }
 
    render() {
+       if (!this.state.signedIn) {
+          return (
+            <div className="Signup">
+              <h1>Surdi</h1>
+              <p>Please sign-in:</p>
+              <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+            </div>
+          );
+        }
     return (
-        <div className="Question">
+        <div className="GetQuestion">
+        {/* <Login /> */}
+            <h1>This Question</h1>
                 {this.state.question.map((quest, index) => {
                 return (
                     <Question QuesData={quest} key={index}/>
                 )
             })}
-            
-            <form onSubmit={this.getAnswer}>
-                    
-                    {/* <input
-                        onChange={this.updateUserId}
-                        placeholder="User"
-                        value={this.state.userId}
-                    />
-                     <input
-                        onChange={this.updateQuestionId}
-                        placeholder="Question"
-                        value={this.state.questionId}
-                    /> */}
-                    <textarea
-                        onChange={this.updateAnswer}
-                        placeholder="Answer"
-                        value={this.state.answer}
-                    />
-                    {/* <Gif /> */}
-                    <button type="submit">Submit Answer</button>
-                </form>    
+            <QuestionAnswerForm />
+            {/* <div>
+                <QuestionAnswerForm />
+            </div>    */}
         </div>
        );
    }
