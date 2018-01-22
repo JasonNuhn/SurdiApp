@@ -106,7 +106,7 @@ class AskQuestion extends Component {
                 <h4>Be Specific</h4>
                 <p>If the question you ask is vague, the answer would most likely be vague as well.</p>
                 <h4>Keep an open mind</h4>
-                <p>Be aware that you may not get the answer you wanted.  When in doubt, ask people to ite their sources</p>
+                <p>Be aware that you may not get the answer you wanted.  When in doubt, ask people to cite their sources</p>
                 <form onSubmit={this.addQuestion}>
                     <input
                         onChange={this.updateUserId}

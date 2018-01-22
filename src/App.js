@@ -9,6 +9,7 @@ import Profiles from './Profiles/Profiles';
 import Questions from './Question/Questions';
 import AskQuestion from './Question/AskQuestion';
 import GetQuestion from './Question/GetQuestion';
+import GetProfile from './Profiles/GetProfile';
 // import Signup from './Signup/Signup';
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
         <Route path="/profiles" component={Profiles} />
         <Route path="/askquestion" component={AskQuestion} />
         <Route path="/question/:id" component={GetQuestion} />
+        <Route path="/profile/:id" component={GetProfile} />
         {/* <Route path="/signup" component={Signup} /> */}
       </div>
     </Router>

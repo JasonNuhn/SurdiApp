@@ -1,9 +1,17 @@
-.Language {
+/* .Language {
     background-color: #CCCCCC;
     height: 220px;
     width: 100;
     color: #003366;
     box-sizing: content-box;
+  } */
+
+  .Language-all {
+    border-style: groove;
+    border-color: #CCCCCC;
+    border-width: 1px;
+    /* margin: 8px 0; */
+    padding: 10px 6px;
   }
 
   #col {
