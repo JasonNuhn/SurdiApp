@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
-import firebase, { auth, provider } from './firebase.js';
+import firebase, { auth, provider } from '../firebase';
 //mport  from './user/Home';
 
 
@@ -18,6 +18,7 @@ class LoginFix extends Component {
     this.handleChangeSignUpEmail = this.handleChangeSignUpEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logout = this.logout.bind(this);
+    this.login = this.login.bind(this);
   }
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
@@ -75,17 +76,18 @@ class LoginFix extends Component {
   }
   render() {
     return (
-      <div className='App'>
-        {this.state.user
-          ?
-            <div className="loggedIn">
-              <Home userData={this.state.user}/>
-              <br/>
-              <button onClick={this.logout}>Log Out</button>
-            </div>
+      <div>
+        <header>
+          <div>
+          {this.state.user ? 
+            <button onClick={this.logout}>Logout</button>
           :
-            <div className="splash">
-              <h1 className="title">LevelUp</h1>
+            <button onClick={this.login}>Log In</button>
+            }
+          </div>
+        </header>
+
+
               <button onClick={this.loginGoogle}>Log In with Google</button>
               <br/>
               <button>Log In with E-mail</button>
@@ -105,11 +107,9 @@ class LoginFix extends Component {
                 <br/>
                 <input value='Sign Up' type='submit'/>
               </form>
-            </div>
-        }
-      </div>
-    );
-  }
+          </div>
+    )
+}
 }
 
 export default LoginFix;

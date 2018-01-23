@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Profile from './Profile';
 //import QuestionAnswerForm from './QuestionAnswerForm';
@@ -74,7 +75,11 @@ componentDidMount() {
     //     }
     return (
         <div className="GetProfile">
-        {/* <Login /> */}
+        <Link className="QB" to="/askquestion">
+                <button type="button">
+                      Ask Question
+                </button>
+              </Link>
             <h1>This Profile</h1>
                 {this.state.profile.map((pro, index) => {
                 return (
