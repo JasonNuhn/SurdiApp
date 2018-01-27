@@ -49,6 +49,7 @@ class Signup extends Component {
             return false; // Avoid redirects after sign-in.
           }
         }
+        
       };
       
       render() {

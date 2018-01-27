@@ -5,7 +5,7 @@ import QuestionAnswerForm from './QuestionAnswerForm';
 // import Login from '../Login/Login';
 import { FirebaseAuth } from 'react-firebaseui';
 import firebase from "firebase";
-
+//import {config} from "../Helper/firebaseConfig";
 
 // import Gif from '../Gif/gif';
 import './Question.css';
@@ -18,7 +18,7 @@ import './Question.css';
 //     storageBucket: "surdiapp.appspot.com",
 //     messagingSenderId: "772398718929"
 //   };
-  //firebase.initializeApp(config);
+//   firebase.initializeApp(config);
 
 class GetQuestion extends Component {
    constructor() {

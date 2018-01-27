@@ -4,16 +4,17 @@ import axios from 'axios';
 // import Login from '../Login/Login';
 import { FirebaseAuth } from 'react-firebaseui';
 import * as firebase from "firebase";
+import {config} from "../Helper/firebaseConfig";
 
-var config = {
-    apiKey: "AIzaSyAhINOMHPGdc-Bnj5JzRUdFsbBrNJ9rp60",
-    authDomain: "surdiapp.firebaseapp.com",
-    databaseURL: "https://surdiapp.firebaseio.com",
-    projectId: "surdiapp",
-    storageBucket: "surdiapp.appspot.com",
-    messagingSenderId: "772398718929"
-  };
-  firebase.initializeApp(config);
+// var config = {
+//     apiKey: "AIzaSyAhINOMHPGdc-Bnj5JzRUdFsbBrNJ9rp60",
+//     authDomain: "surdiapp.firebaseapp.com",
+//     databaseURL: "https://surdiapp.firebaseio.com",
+//     projectId: "surdiapp",
+//     storageBucket: "surdiapp.appspot.com",
+//     messagingSenderId: "772398718929"
+//   };
+firebase.initializeApp(config);
 
 class AskQuestion extends Component {
         constructor(props) {
@@ -40,6 +41,7 @@ class AskQuestion extends Component {
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
           //firebase.auth.FacebookAuthProvider.PROVIDER_ID
         ],
+        
         // Sets the `signedIn` state property to `true` once signed in.
         callbacks: {
           signInSuccess: () => {
